@@ -18,6 +18,7 @@ gem 'coffee-rails', '~> 4.2'
 
 gem 'crack'
 gem 'amazon-ecs'
+gem 'xml-to-json'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

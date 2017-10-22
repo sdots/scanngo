@@ -11,11 +11,11 @@ class ProductsController < ApplicationController
     end
 
     # Search Amazon US
-    res = Amazon::Ecs.item_lookup(params[:id], {:response_group => 'Medium'})
-    item = res.get_element("Item").to_s
-    @item = Crack::XML.parse(item).to_json    
-
-    render json: @item
+    # res = Amazon::Ecs.item_lookup(params[:id], {:response_group => 'Large', id_type: 'upc', search_index: 'All'})
+    # item = res.get_element("Item").to_s
+    # @item = Crack::XML.parse(item).to_json    
+    @data = File.read("#{Rails.root}/public/data.json")
+    render json: @data
     
   end
 end

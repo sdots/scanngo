@@ -43,7 +43,7 @@ class ProductsController < ApplicationController
       "ItemId" => productId,
       "SearchIndex" => "All",
       "IdType" => "UPC",
-      "ResponseGroup" => "Images,ItemAttributes"
+      "ResponseGroup" => "Medium"
     }
     
     # Set current timestamp if not set
@@ -64,7 +64,6 @@ class ProductsController < ApplicationController
     data = "http://" + endpoint + "" + request_uri + "?#{canonical_query_string}&Signature=#{URI.escape(signature, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))}"
     d = Nokogiri::XML(open(data)).to_s
     @res = Hash.from_xml(d).to_json
-    #@response = res.get_element("Item")
     render json: @res
   end
 end

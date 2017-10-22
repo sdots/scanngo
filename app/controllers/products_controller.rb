@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
     end
 
     # Search Amazon US
-    res = Amazon::Ecs.item_lookup("B075QNGHS8")
+    res = Amazon::Ecs.item_lookup(params[:id], {:response_group => 'Medium'})
     item = res.get_element("Item").to_s
     @item = Crack::XML.parse(item).to_json    
 
